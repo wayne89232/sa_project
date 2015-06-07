@@ -8,6 +8,7 @@
         <meta name="keywords" content="" />
 
         <base href="/">
+
         <script src="../js/lib/underscore/underscore-min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -19,20 +20,28 @@
         <script src="../js/controllers.js"></script>
         <script src="../js/filters.js"></script>
         <script src="../js/directives.js"></script>
+            <!-- template native scripts -->
+            <script src="../js/jquery.min.js"></script>
+            <script src="../js/jquery.dropotron.min.js"></script>
+            <script src="../js/jquery.scrollgress.min.js"></script>
+            <script src="../js/skel.min.js"></script>
+            <script src="../js/util.js"></script>
+            <script src="../js/main.js"></script>
+        <link rel="stylesheet" href="css/index.css" />
     </head>
     <body ng-controller="AppCtrl">
         <!-- Header -->
-        <header id="header" class="alt">
-            <h1><a href="index.html">Alpha</a> by HTML5 UP</h1>
+        <header id="header">
+            <h1><a href="index.html">SA_project</a> by booas</h1>
             <nav id="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li>
-                        <a href="#" class="icon fa-angle-down">Layouts</a>
+                        <a href="#" class="icon fa-angle-down">Pages</a>
                         <ul>
-                            <li><a href="generic.html">Generic</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="elements.html">Elements</a></li>
+                            <li><a href="/Event">Events</a></li>
+                            <li><a href="contact.html">Stuff</a></li>
+                            <li><a href="elements.html">Some stuff</a></li>
                             <li>
                                 <a href="#">Submenu</a>
                                 <ul>
@@ -44,7 +53,9 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#" class="button">Sign Up</a></li>
+                    <li><a href="#" class="button" ng-hide="false">Sign In</a></li>
+                    <li><a href="#" class="button" ng-hide="false">Sign Up</a></li>
+                    <li><a href="#" class="button" ng-hide="true">Logout</a></li>
                 </ul>
             </nav>
         </header>
