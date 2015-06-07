@@ -8,7 +8,8 @@ var express = require('express'),
     morgan = require('morgan'),
     routes = require('./routes'),
     api = require('./routes/api'),
-    
+    cookieParser=require('cookie-parser'),
+    session = require('express-session'),
     // import routers
     // example = require('./routes/example'),
     http = require('http'),
@@ -19,7 +20,18 @@ var app = module.exports = express();
 
 /**
  * Configuration
+
  */
+var fs = require('fs');
+ 
+try {
+  var configJSON = fs.readFileSync(__dirname + "/config.json");
+  var config = JSON.parse(configJSON.toString());
+} catch (e) {
+  console.error("File config.json not found or is invalid: " + e.message);
+  process.exit(1);
+}
+routes.init(config); //paypal
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -28,6 +40,8 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser('your secret here'));
+app.use(session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
