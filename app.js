@@ -8,9 +8,7 @@ var express = require('express'),
     morgan = require('morgan'),
     routes = require('./routes'),
     api = require('./routes/api'),
-    
-    // import routers
-    // example = require('./routes/example'),
+    multer  = require('multer'),
     http = require('http'),
     path = require('path');
 
@@ -29,7 +27,18 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(multer({
+    dest: "./images/",
+    rename: function(fieldname, filename){
+        return filename+Date.now();
+    },
+    onFileUploadStart: function(file){
+        console.log("Uploading"+file.originalname);
+    },
+    onFIleUploadComplete: function(){
+        console.log("Done");
+    }
+}));
 
 var env = process.env.NODE_ENV || 'development';
 
