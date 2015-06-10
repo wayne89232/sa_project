@@ -40,9 +40,9 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser('your secret here'));
+app.use(cookieParser('some_secret'));
 app.use(session({
-    secret: "some secret",
+    secret: "some_secret",
     resave: true,
     saveUninitialized: true
 }));
