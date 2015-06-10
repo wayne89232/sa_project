@@ -2,12 +2,13 @@
     <head>
 
         <!-- All css and scripts used -->
-        <title></title>
+        <title>SA_project</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
 
         <base href="/">
+
         <script src="../js/lib/underscore/underscore-min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -19,12 +20,36 @@
         <script src="../js/controllers.js"></script>
         <script src="../js/filters.js"></script>
         <script src="../js/directives.js"></script>
+            <!-- template native scripts -->
+            <script src="../js/jquery.min.js"></script>
+            <script src="../js/jquery.dropotron.min.js"></script>
+            <script src="../js/jquery.scrollgress.min.js"></script>
+            <script src="../js/skel.min.js"></script>
+            <script src="../js/util.js"></script>
+            <script src="../js/main.js"></script>
+        <link rel="stylesheet" href="css/index.css" />
     </head>
     <body ng-controller="AppCtrl">
-        <!-- some navbar here -->
-        <!-- <nav id="nav" class="skel-layers-fixed "> -->
-        <!-- </nav> -->
+        <!-- Header -->
+        <header id="header">
+            <h1><a href="/home">SA_project</a> by booas</h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li>
+                        <a href="/Event">Discover</a>
+                            
+                    </li>
+                    <li><a href="#" class="button" ng-hide="false">Sign In</a></li>
+                    <li><a href="/Signup" class="button" ng-hide="false">Sign Up</a></li>
+                    <li><a href="#" class="button" ng-hide="true">Logout</a></li>
 
+                    </li>
+                </ul>
+
+
+            </nav>
+        </header>
         <!-- The div for partials -->
         <div class = "container">
             <div ng-view="">

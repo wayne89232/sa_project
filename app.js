@@ -8,9 +8,9 @@ var express = require('express'),
     morgan = require('morgan'),
     routes = require('./routes'),
     api = require('./routes/api'),
-    
-    // import routers
-    // example = require('./routes/example'),
+    multer  = require('multer'),
+    cookieParser=require('cookie-parser'),
+    session = require('express-session'),
     http = require('http'),
     path = require('path');
 
@@ -19,7 +19,18 @@ var app = module.exports = express();
 
 /**
  * Configuration
+
  */
+var fs = require('fs');
+ 
+try {
+  var configJSON = fs.readFileSync(__dirname + "/config.json");
+  var config = JSON.parse(configJSON.toString());
+} catch (e) {
+  console.error("File config.json not found or is invalid: " + e.message);
+  process.exit(1);
+}
+routes.init(config); //paypal
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -28,8 +39,25 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser('some_secret'));
+app.use(session({
+    secret: "some_secret",
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(multer({
+    dest: "./images/",
+    rename: function(fieldname, filename){
+        return filename+Date.now();
+    },
+    onFileUploadStart: function(file){
+        console.log("Uploading"+file.originalname);
+    },
+    onFIleUploadComplete: function(){
+        console.log("Done");
+    }
+}));
 
 var env = process.env.NODE_ENV || 'development';
 
