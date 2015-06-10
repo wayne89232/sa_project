@@ -13,6 +13,7 @@ var Bulletin = require('./bulletin').Bulletin(Sequelize,sequelize);
 var Comment = require('./comment').Comment(Sequelize,sequelize);
 var Donation = require('./donation').Donation(Sequelize,sequelize);
 var Event = require('./event').Event(Sequelize,sequelize);
+var Follow = require('./follow').Follow(Sequelize,sequelize);
 var User = require('./user').User(Sequelize,sequelize);
 
 //add some relations here
@@ -27,6 +28,10 @@ Event.hasMany(Donation, {foreignKey: 'donation_id'});
 Donation.belongsTo(Event, {foreignKey: 'donation_id'});
 User.hasMany(Donation, {foreignKey: 'donation_id'});
 Donation.belongsTo(User, {foreignKey: 'donation_id'});
+Event.hasMany(Follow, {foreignKey: 'follow_id'});
+Follow.belongsTo(Event, {foreignKey: 'follow_id'});
+User.hasMany(Follow, {foreignKey: 'follow_id'});
+Follow.belongsTo(User, {foreignKey: 'follow_id'});
 //export for use in other directory
 // exports.Example = Example;
 
