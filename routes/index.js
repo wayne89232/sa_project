@@ -17,4 +17,4 @@ exports.partials = function (req, res) {
 exports.init = function(c){
   config = c;
   paypal.configure(c.api);
-}
+};
