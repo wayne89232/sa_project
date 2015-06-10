@@ -1,7 +1,9 @@
 exports.User = function(Sequelize, sequelize){
 	return sequelize.define('User', {
-		player_id: { type: Sequelize.INTEGER, primaryKey: true }, 
-		photo_url: Sequelize.STRING ,
+		user_id: { type: Sequelize.INTEGER, primaryKey: true },
+		account: Sequelize.STRING,
+		password: Sequelize.STRING,
+		photo_url: Sequelize.STRING,
 		user_name: Sequelize.STRING,
 		birthdate: Sequelize.STRING,
 		email: Sequelize.STRING, 
