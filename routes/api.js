@@ -5,16 +5,13 @@ var _ = require('underscore');
 var User = require('../models').User;
 
 exports.checkLogin = function(req, res, next){
-	var isLogin = false;
-	if( _.has(req.session, 'isLogin') ){
-		isLogin = req.session.isLogin;
-	}
-	if(isLogin){
+	if(req.session.user == undefined){
 		next();
-	}else{
-		res.status(401).json({
+	}
+	else{
+		res.json({
 			error:true,
-			msg:"Plz login"
+			msg:"Login first"
 		});
 	}
 }
@@ -33,7 +30,9 @@ exports.login = function (req, res){
 			var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
 			req.session.user = user;
 			req.session.isLogin = true;
-			res.json({msg:"login success"});
+			res.json({
+				msg:"login success"
+			});
 		}
 	});
 }
