@@ -14,29 +14,30 @@ var Comment = require('./comment').Comment(Sequelize,sequelize);
 var Donation = require('./donation').Donation(Sequelize,sequelize);
 var Event = require('./event').Event(Sequelize,sequelize);
 var Follow = require('./follow').Follow(Sequelize,sequelize);
-var Friend = require('./friend').Friend(Sequelize,sequelize)
+var Friendship = require('./friendship').Friendship(Sequelize,sequelize)
 var User = require('./user').User(Sequelize,sequelize);
 
 //add some relations here
 // Example.hasMany(People, {foreignKey: 'people_id'});
-Event.hasMany(Bulletin, {foreignKey: 'bulletin_id'});
-Bulletin.belongsTo(Event, {foreignKey: 'bulletin_id'});
-Event.hasMany(Comment, {foreignKey: 'comment_id'});
-Comment.belongsTo(Event, {foreignKey: 'comment_id'});
-User.hasMany(Comment, {foreignKey: 'comment_id'});
-Comment.belongsTo(User, {foreignKey: 'comment_id'});
-Event.hasMany(Donation, {foreignKey: 'donation_id'});
-Donation.belongsTo(Event, {foreignKey: 'donation_id'});
-User.hasMany(Donation, {foreignKey: 'donation_id'});
-Donation.belongsTo(User, {foreignKey: 'donation_id'});
-Event.hasMany(Follow, {foreignKey: 'follow_id'});
-Follow.belongsTo(Event, {foreignKey: 'follow_id'});
-User.hasMany(Follow, {foreignKey: 'follow_id'});
-Follow.belongsTo(User, {foreignKey: 'follow_id'});
-User.hasMany(Friend, {foreignKey: 'user_id'});
-Friend.belongsTo(User, {foreignKey: 'user_id'});
-User.hasMany(Friend, {foreignKey: 'friend_id'});
-Friend.belongsTo(User, {foreignKey: 'friend_id'});
+Event.hasMany(Bulletin, {foreignKey: 'event_id'});
+Bulletin.belongsTo(Event, {foreignKey: 'event_id'});
+Event.hasMany(Comment, {foreignKey: 'event_id'});
+Comment.belongsTo(Event, {foreignKey: 'event_id'});
+User.hasMany(Comment, {foreignKey: 'user_id'});
+Comment.belongsTo(User, {foreignKey: 'user_id'});
+Event.hasMany(Donation, {foreignKey: 'event_id'});
+Donation.belongsTo(Event, {foreignKey: 'event_id'});
+User.hasMany(Donation, {foreignKey: 'user_id'});
+Donation.belongsTo(User, {foreignKey: 'user_id'});
+Event.hasMany(Follow, {foreignKey: 'event_id'});
+Follow.belongsTo(Event, {foreignKey: 'event_id'});
+User.hasMany(Follow, {foreignKey: 'user_id'});
+Follow.belongsTo(User, {foreignKey: 'user_id'});
+User.hasMany(Friendship, {foreignKey: 'user_id'});
+Friendship.belongsTo(User, {foreignKey: 'user_id'});
+
+User.hasMany(Friendship, {foreignKey: 'friend_id'});
+Friendship.belongsTo(User, {foreignKey: 'user_id'});
 //export for use in other directory
 // exports.Example = Example;
 
@@ -45,5 +46,5 @@ exports.Comment = Comment;
 exports.Donation = Donation;
 exports.Event = Event;
 exports.Follow = Follow;
-exports.Friend = Friend;
+exports.Friendship = Friendship;
 exports.User = User;
