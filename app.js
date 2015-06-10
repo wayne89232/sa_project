@@ -9,6 +9,8 @@ var express = require('express'),
     routes = require('./routes'),
     api = require('./routes/api'),
     multer  = require('multer'),
+    cookieParser=require('cookie-parser'),
+    session = require('express-session'),
     http = require('http'),
     path = require('path');
 
@@ -17,7 +19,18 @@ var app = module.exports = express();
 
 /**
  * Configuration
+
  */
+var fs = require('fs');
+ 
+try {
+  var configJSON = fs.readFileSync(__dirname + "/config.json");
+  var config = JSON.parse(configJSON.toString());
+} catch (e) {
+  console.error("File config.json not found or is invalid: " + e.message);
+  process.exit(1);
+}
+routes.init(config); //paypal
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -26,6 +39,12 @@ app.set('view engine', 'ejs');
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser('some_secret'));
+app.use(session({
+    secret: "some_secret",
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(multer({
     dest: "./images/",

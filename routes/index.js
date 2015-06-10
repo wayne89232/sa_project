@@ -1,4 +1,5 @@
-
+var paypal = require('paypal-rest-sdk');
+var config = {};
 /*
  * GET home page.
  */
@@ -12,3 +13,8 @@ exports.partials = function (req, res) {
   	var name = req.params.name;
   	res.render('partials/' + name);
 };
+
+exports.init = function(c){
+  config = c;
+  paypal.configure(c.api);
+}
