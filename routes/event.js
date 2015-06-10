@@ -17,5 +17,28 @@ exports.add_event = function(req, res){
 	}).then(function(new_event){
 		res.json({ msg: "Success on adding event " + new_event });
 	});
+}
 
+exports.track_event = function(req, res){
+	Event_tracking.create({
+		event_id: req.params.event_id,
+		user_id: req.params.user_id
+	}).then(function(result){
+		res.json({msg: "SUccess on tracking event"});
+	});
+}
+
+exports.list_events = function(req, res){
+	Event.findAll().then(function(result){
+		event_list = _.map(result, function(result){
+			return result.dataValues; 
+		});
+		res.json({ msg: event_list });
+	});
+}
+
+exports.show_event = function(req, res){
+	Event.find({ where:{ event_id: req.params.event_id } }).then(function(result){
+		res.json({ msg: result.dataValues });
+	});
 }
