@@ -9,7 +9,6 @@ var sequelize = new Sequelize(
 
 // import models for syncing
 // var Example = require('./models').Example;
-
 var Bulletin = require('./models').Bulletin;
 var Comment = require('./models').Comment;
 var Donation = require('./models').Donation;
@@ -22,7 +21,6 @@ var User = require('./models').User;
 
 // Sync database with below
 // Example.sync({force: true});
-
 Bulletin.sync({force: true});
 Comment.sync({force: true});
 Donation.sync({force: true});
