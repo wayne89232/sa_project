@@ -4,6 +4,6 @@ exports.Friendship = function(Sequelize, sequelize){
 		user_id: Sequelize.INTEGER,
 		friend_id: Sequelize.INTEGER
 	},{
-		tableName: 'Friendship'
+		tableName: 'friendship'
 	});
 }

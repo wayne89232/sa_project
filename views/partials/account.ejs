@@ -1,78 +1,48 @@
-			<!-- Main -->
-				<section id="main" class="container">
-					<header>
-						<h2>Create your account</h2>
-						<p>Get an account to backup any events you interested in!</p>
-					</header>
-					
-
-					<h1>UserName</h1>
-  					<input type="text" class="form-control" placeholder="Username" style="height:40px; width:350px;">
-					
-						
-					<div class="input-group">
-					<h1>PassWord</h1>
-					<input type="text" class="form-control" placeholder="Please type your password" style="height:40px; width:350px;">
-					
-					</div>
-
-					<div class="input-group">
-					  <h1>Confirm Password</h1>
-					  <input type="text" class="form-control" style="height:40px; width:350px;">
-					  
-					</div>
-
-					<div class="8u 12u(mobilep)">
-					  
-					  <!-- <h1>First Name</h1> -->
-					  <input type="text" class="form-control" style="height:40px; width:350px;">
-					 
-					  
-					</div>
-
-					<div class="input-group">
-					  <h1>Last Name</h1>
-					  <input type="text" class="form-control" style="height:40px; width:350px;">
-					  
-					</div>
-
-					<div class="input-group">
-					  <h1>Email Address</h1>
-					  <input type="text" class="form-control" style="height:40px; width:350px;">
-					  
-					</div>
-					<section id="cta">
-
-					<h2>Sign up for beta access</h2>
-					<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
-
-					<form>
-						<div class="row uniform 50%">
-							<div class="8u 12u(mobilep)">
-								<input type="email" name="email" id="email" placeholder="Email Address" />
-							</div>
-							<div class="4u 12u(mobilep)">
-								<input type="submit" value="Sign Up" class="fit" />
-							</div>
-						</div>
-					</form>
-
-				</section>
-
-
-				</section>
-
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>	
-						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">IM Booas</a></li>
-					</ul>
-				</footer>
+<!-- Main -->
+<section id="main" class="container">
+	<header>
+		<h2>Create your account</h2>
+		<p>Get an account to backup any events you interested in!</p>
+	</header>
+	<section id="cta">
+		<form>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Account</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="text" ng-model="account" placeholder="Your account here" />
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Password</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="password" ng-model="password" placeholder="Your password here" />
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Confirm Password</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="password" ng-model="password_confirm" placeholder="Confirm your password" />
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Email Address</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="email" ng-model="email" placeholder="Email Address" />
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="left: 30%; position: relative;">
+					<input type="submit" ng-click="register()" value="Sign Up" class="fit" />
+				</div>
+			</div>
+		</form>
+	</section>
+</section>

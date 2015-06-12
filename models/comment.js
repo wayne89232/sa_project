@@ -5,6 +5,6 @@ exports.Comment = function(Sequelize, sequelize){
 		event_id: Sequelize.STRING,
     	content: Sequelize.STRING
 	},{
-		tableName: 'Comment'
+		tableName: 'comment'
 	});
 }

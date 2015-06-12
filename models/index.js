@@ -14,7 +14,7 @@ var Comment = require('./comment').Comment(Sequelize,sequelize);
 var Donation = require('./donation').Donation(Sequelize,sequelize);
 var Event = require('./event').Event(Sequelize,sequelize);
 var Follow = require('./follow').Follow(Sequelize,sequelize);
-var Friendship = require('./friendship').Friendship(Sequelize,sequelize)
+var Friendship = require('./friendship').Friendship(Sequelize,sequelize);
 var User = require('./user').User(Sequelize,sequelize);
 
 //add some relations here

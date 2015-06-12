@@ -4,6 +4,6 @@ exports.Follow = function(Sequelize, sequelize){
 		user_id: Sequelize.STRING,
 		event_id: Sequelize.STRING,
 	},{
-		tableName: 'Follow'
+		tableName: 'follow'
 	});
 }

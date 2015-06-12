@@ -6,6 +6,6 @@ exports.Bulletin = function(Sequelize, sequelize){
 		date: Sequelize.STRING,
 		content: Sequelize.STRING
 	},{
-		tableName: 'Bulletin'
+		tableName: 'bulletin'
 	});
 }

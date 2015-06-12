@@ -6,6 +6,6 @@ exports.Donation = function(Sequelize, sequelize){
 		date: Sequelize.STRING,
 		ammount: Sequelize.INTEGER
 	},{
-		tableName: 'Donation'
+		tableName: 'donation'
 	});
 }

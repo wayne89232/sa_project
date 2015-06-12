@@ -10,6 +10,6 @@ exports.Event = function(Sequelize, sequelize){
 		bank_account: Sequelize.STRING,
 		description: Sequelize.STRING
 	},{
-		tableName: 'Event'
+		tableName: 'event'
 	});
 }
