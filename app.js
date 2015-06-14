@@ -83,6 +83,7 @@ app.get('/partials/:name', routes.partials);
 //functions, ex: 
 // app.post('/api/add_league', api.add_league);
 app.post('/api/register', api.register);
+app.post('/api/login', api.login);
 
 
 // redirect all others to the index (HTML5 history)

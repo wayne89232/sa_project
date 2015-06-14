@@ -1,10 +1,42 @@
 'use strict';
 
 angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($rootScope, $window, $scope, $http, $location) {
-    // $http({ method:"GET", url:'/api/check_login' }).success(function(result){
-    //     $rootScope.isLogin = true;
-    // });
-	
+    
+	if($window.localStorage.getItem("is_login")){
+		$scope.is_login = true;
+		$scope.local_user = $window.localStorage.getItem("account");
+	} 	
+
+	$scope.login = function(){
+		if($scope.account != null && $scope.password != null){
+	            var data = {
+	                account: $scope.account, 
+	                password: $scope.password
+	            };
+		    $http({ 
+		    	method:"POST", 
+		    	url:'/api/login',
+		    	data: data
+		     }).then(function(result){
+				if(result.data.success==true){
+					$window.localStorage.setItem("is_login", true);
+					$window.localStorage.setItem("account", result.data.user);
+					$window.location.reload();
+				}
+				else{
+					alert(result.data.msg)
+					$window.location.reload();
+				}
+		    });	
+		}
+		else{
+			alert("Invalid account or password");
+		}
+	}
+	$scope.logout = function(){
+		$window.localStorage.clear();
+		$window.location.reload();
+	}
 }).controller('Create_account', function ($scope, $http, $location, $window, $routeParams) {
     $scope.register = function(){
     	if($scope.account != null && $scope.password != null){

@@ -27,7 +27,15 @@
             <script src="../js/skel.min.js"></script>
             <script src="../js/util.js"></script>
             <script src="../js/main.js"></script>
+        <script src="../css/semantic.js"></script>
+        <link rel="stylesheet" href="css/semantic.css" />
         <link rel="stylesheet" href="css/index.css" />
+            <script type="text/javascript">
+        $(document).ready(function(){
+            $('.modal').modal();
+            $('.basic.modal').modal('attach events', '.minimal.button');
+        });
+        </script>
     </head>
     <body ng-controller="AppCtrl">
         <!-- Header -->
@@ -36,14 +44,15 @@
             <nav id="nav">
                 <ul>
                     <li><a href="/home">Home</a></li>
+                    <li><a href="/Event">Discover</a></li>
                     <li>
-                        <a href="/Event">Discover</a>
-                            
+                        <a href="#" class="ui minimal button" ng-hide="is_login">Sign In</a>
                     </li>
-                    <li><a href="#" class="button" ng-hide="false">Sign In</a></li>
-                    <li><a href="/Signup" class="button" ng-hide="false">Sign Up</a></li>
-                    <li><a href="#" class="button" ng-hide="true">Logout</a></li>
-
+                    <li>
+                        <a href="/Signup" class="ui button" ng-hide="is_login">Sign Up</a>
+                    </li>
+                    <li>
+                        <a class="button" ng-click="logout()" ng-show="is_login">Logout</a>
                     </li>
                 </ul>
 
@@ -51,6 +60,33 @@
             </nav>
         </header>
         <!-- The div for partials -->
+        <div class="ui basic modal">
+            <div class="header">
+                Login
+            </div>
+            <div class="content">
+                <div class="description">
+                    <form>
+                        <div class="ui transparent input">
+                            <input ng-model="account" class="ui basic" type="text" placeholder="account">
+                        </div>
+                        <div class="ui transparent input">
+                            <input ng-model="password" class="ui basic" type="password" placeholder="password">    
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="actions">
+                <div class="two fluid ui inverted buttons"> 
+                    <div class="ui green ok basic inverted button" ng-click="login()">
+                        <i class="checkmark icon"></i>Login
+                    </div>
+                    <div class="ui red cancel basic inverted button">
+                        <i class="remove icon"></i>Cancel
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class = "container">
             <div ng-view="">
                 

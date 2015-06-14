@@ -25,14 +25,22 @@ exports.login = function (req, res){
 	}
 	User.find(query).then(function(user){
 		if(user == null){
-			res.json({msg:"No user!"});
-		}
-		else{
-			var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
-			req.session.user = user;
-			req.session.isLogin = true;
 			res.json({
-				msg:"login success"
+                success:false,
+                msg: "no such user"
+            });
+		}
+        else if(req.body.password!=user.dataValues.password){
+            res.json({
+                success: false,
+                msg: "wrong password"
+            })
+        }
+		else{
+			// var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
+			res.json({
+				success: true,
+                user: user.dataValues.account
 			});
 		}
 	});
@@ -68,9 +76,6 @@ exports.register = function(req, res){
         	})
         }
         else{
-            var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
-            req.session.user = user;
-            req.session.isLogin = true;
             res.redirect('/');
         }
     });    
