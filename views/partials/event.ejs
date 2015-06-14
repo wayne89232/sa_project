@@ -6,15 +6,16 @@
 		</header>
 		<div class="ui cards">
 		  	<div class="card" ng-repeat="event in event_list">
-		    	<a class="image">
+		    	<a class="image" ng-click="show_event(event.event_id)">
 		      		<img src="/images/J.JPG">
 		    	</a>
 		   		<div class="content">
-		      		<a class="header" ng-bind="event.event_name"></a>
+		      		<p class="header" ng-bind="event.event_name"></p>
 		      	<div class="meta">
-		        	<a ng-bind="event.event_date"></a>
+		        	<p ng-bind="event.event_date"></p>
 		      	</div>
-		      	<div class="description" ng-bind="event.description">
+		      	<div class="description">
+		      		<p ng-bind="event.description"></p>
 		      	</div>
 		    </div>
 		  </div>
