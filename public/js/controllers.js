@@ -133,8 +133,23 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
     	$location.path('/event/'+id);
     }	
 }).controller('show_event', function ($scope, $http, $location, $window, $routeParams) {
-	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).success(function(result){
-        $scope.event = result.data;
+	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).then(function(result){
+        $scope.event = result.data.data;
+        $http({ method:"GET", url:'/event/donation_list/' + $routeParams.id }).then(function(result){
+    		$scope.donation_list = result.data.data;
+    		$scope.donation_count = $scope.donation_list.length;
+    		$scope.donation_total = 0;
+    		_.map($scope.donation_list, function(result){
+				$scope.donation_total+=result.amount;
+			});
+			$scope.progress = Math.round($scope.donation_total/$scope.event.goal * 100);
+			if($scope.progress>100){
+				$scope.progress_bar = {"width": "100%"}
+			}
+			else{
+				$scope.progress_bar = {"width": $scope.progress+"%"}
+			}
+    	});
     });
 
 	$scope.current = 0;
@@ -158,7 +173,7 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
             var data = {
                 event_name: $scope.event_name, 
                 event_date: $scope.event_date,
-                event_goal: $scope.goal,
+                event_goal: parseInt($scope.goal),
                 location:$scope.location,
                 description: $scope.description
             };

@@ -89,6 +89,7 @@ app.post('/event/add_event', event.add_event);
 app.post('/api/donate', api.donate);
 app.get('/event/list_event', event.list_event);
 app.get('/event/show_event/:event_id', event.show_event);
+app.get('/event/donation_list/:event_id', event.donation_list);
 
 
 // redirect all others to the index (HTML5 history)
