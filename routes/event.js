@@ -33,12 +33,12 @@ exports.list_events = function(req, res){
 		event_list = _.map(result, function(result){
 			return result.dataValues; 
 		});
-		res.json({ msg: event_list });
+		res.json({ data: event_list });
 	});
 }
 
 exports.show_event = function(req, res){
 	Event.find({ where:{ event_id: req.params.event_id } }).then(function(result){
-		res.json({ msg: result.dataValues });
+		res.json({ data: result.dataValues });
 	});
 }

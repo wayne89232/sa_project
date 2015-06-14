@@ -37,10 +37,10 @@ exports.login = function (req, res){
             })
         }
 		else{
-			// var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
 			res.json({
 				success: true,
-                user: user.dataValues.account
+                user: user.dataValues.account,
+                type: user.dataValues.user_type
 			});
 		}
 	});
@@ -64,7 +64,7 @@ exports.register = function(req, res){
             	user_name: req.body.user_name,
             	birthdate: req.body.birthdate,
             	email: req.body.email,
-            	user_type: req.body.user_type
+            	user_type: "donor"
             }).then(function(user){
                 var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
                 console.log(user);

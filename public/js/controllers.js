@@ -5,6 +5,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 	if($window.localStorage.getItem("is_login")){
 		$scope.is_login = true;
 		$scope.local_user = $window.localStorage.getItem("account");
+		$scope.user_type = $window.localStorage.getItem("user_type");
 	} 	
 
 	$scope.login = function(){
@@ -21,6 +22,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 				if(result.data.success==true){
 					$window.localStorage.setItem("is_login", true);
 					$window.localStorage.setItem("account", result.data.user);
+					$window.localStorage.setItem("user_type", result.data.type);
 					$window.location.reload();
 				}
 				else{
@@ -36,6 +38,22 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 	$scope.logout = function(){
 		$window.localStorage.clear();
 		$window.location.reload();
+	}
+	$scope.donor_identify = function(){
+		if($scope.user_type=="donor"){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	$scope.admin_identify = function(){
+		if($scope.user_type=="admin"){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }).controller('Create_account', function ($scope, $http, $location, $window, $routeParams) {
     $scope.register = function(){
