@@ -84,4 +84,14 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             alert("Fill in all entities!");
         }
     }
+}).controller('User', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.current = 0;
+	$scope.show = [false, true, true, true, true];
+	$scope.show = function(num){
+		if(num != $scope.current){
+			$scope.show[$scope.current] = true;
+			$scope.show[num] = false;
+			$scope.current = num;
+		}
+	}
 });
