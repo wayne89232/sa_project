@@ -113,6 +113,7 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
     });
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){
+    	console.log($scope.event_date);
     	if($scope.event_name != null && $scope.event_date != null && $scope.goal != null){
             var data = {
                 event_name: $scope.event_name, 
