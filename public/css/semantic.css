@@ -20475,7 +20475,7 @@ ol.ui.horizontal.list li:before,
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 290px;
+  width: 31%;
   min-height: 0px;
   background: #ffffff;
   padding: 0em;

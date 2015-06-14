@@ -136,7 +136,17 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).success(function(result){
         $scope.event = result.data;
     });
-    $scope.go_donate = function(){
+
+	$scope.current = 0;
+	$scope.show = [false, true, true];
+	$scope.show_change = function(num){
+		if(num != $scope.current){
+			$scope.show[$scope.current] = true;
+			$scope.show[num] = false;
+			$scope.current = num;
+		}
+	}
+	$scope.go_donate = function(){
     	$location.path('/Donate/'+$routeParams.id);
     }	
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
