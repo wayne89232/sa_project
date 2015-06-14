@@ -21,9 +21,9 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/account',
         controller: 'Create_account'
     }).
-    when('/Showevent', {
-        templateUrl: 'partials/showevent',
-        // controller: 'AppCtrl'
+    when('/event/:id', {
+      templateUrl: 'partials/showevent',
+      controller: 'show_event'
     }).
     when('/Donate', {
         templateUrl: 'partials/donate'
