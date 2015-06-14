@@ -4,9 +4,10 @@ var Event = require('../models').Event;
 
 exports.add_event = function(req, res){
 	var new_id = crypto.randomBytes(20).toString('hex');
+	console.log(new_id)
 	Event.create({
 		event_id: new_id,
-		event_name: req.body.name,
+		event_name: req.body.event_name,
 		photo_url: "",
 		event_date: req.body.event_date,
 		expire_time: req.body.expire_time,
@@ -28,10 +29,10 @@ exports.track_event = function(req, res){
 	});
 }
 
-exports.list_events = function(req, res){
+exports.list_event = function(req, res){
 	Event.findAll().then(function(result){
 		event_list = _.map(result, function(result){
-			return result.dataValues; 
+			return result.dataValues;
 		});
 		res.json({ data: event_list });
 	});

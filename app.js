@@ -8,6 +8,7 @@ var express = require('express'),
     morgan = require('morgan'),
     routes = require('./routes'),
     api = require('./routes/api'),
+    event = require('./routes/event'),
     multer  = require('multer'),
     cookieParser=require('cookie-parser'),
     session = require('express-session'),
@@ -84,6 +85,8 @@ app.get('/partials/:name', routes.partials);
 // app.post('/api/add_league', api.add_league);
 app.post('/api/register', api.register);
 app.post('/api/login', api.login);
+app.post('/event/add_event', event.add_event);
+app.get('/event/list_event', event.list_event);
 
 
 // redirect all others to the index (HTML5 history)

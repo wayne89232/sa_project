@@ -94,4 +94,37 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 			$scope.current = num;
 		}
 	}
+}).controller('Event', function ($scope, $http, $location, $window, $routeParams) {
+	$scope.event_list = []; 
+    $http({
+        method: "GET", 
+        url: '/event/list_event', 
+    }).then(function(result){
+    	console.log(result.data.data);
+    	$scope.event_list = result.data.data;
+    });	
+}).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.add_event = function(){
+    	if($scope.event_name != null && $scope.event_date != null && $scope.goal != null){
+	            var data = {
+	                event_name: $scope.event_name, 
+	                event_date: $scope.event_date,
+	                event_goal: $scope.goal,
+	                location:$scope.location,
+	                description: $scope.description
+	            };
+	            $http({
+	                method: "POST", 
+	                url: '/event/add_event', 
+	                data: data
+	            }).then(function(result){
+	            	$window.location.reload();
+	            	$location.path("/Event");
+	            });
+        }
+        else{
+        	console.log($scope.event_name +$scope.date+$scope.goal)
+            alert("Fill in all entities!");
+        }
+    }
 });

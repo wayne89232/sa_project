@@ -21,10 +21,10 @@
 				<input placeholder="Text Input" type="text" ng-model="location">
 			</div>
 		</div>
-		<div class="required field" ng-model="">
+		<div class="required field">
 			<label>Description</label>
-			<textarea></textarea>
+			<textarea ng-model="description"></textarea>
 		</div>
-		<div class="ui submit button">Submit</div>
+		<div class="ui submit button" ng-click="add_event()">Submit</div>
 	</div>
 </section>

@@ -15,7 +15,7 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/Event', {
         templateUrl: 'partials/event',
-        controller: 'AppCtrl'
+        controller: 'Event'
     }).
     when('/Signup', {
         templateUrl: 'partials/account',
@@ -29,9 +29,9 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/user',
         controller: 'User'
     }).
-    when('/Createevent', {
+    when('/Create_event', {
         templateUrl: 'partials/createevent',
-        // controller: 'User'
+        controller: 'Create_event'
     }).
     otherwise({
         redirectTo: '/home'
