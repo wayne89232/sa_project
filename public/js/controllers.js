@@ -111,6 +111,16 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
         $scope.event = result.data;
         console.log($scope.event);
     });
+        $scope.current = 0;
+	$scope.show = [false, true, true];
+	$scope.show_change = function(num){
+		if(num != $scope.current){
+			$scope.show[$scope.current] = true;
+			$scope.show[num] = false;
+			$scope.current = num;
+		}
+	}
+
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){
     	console.log($scope.event_date);

@@ -1,3 +1,16 @@
+<!DOCTYPE HTML>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.menu a.item').on('click', function() {
+			if(!$(this).hasClass('dropdown')) {
+				$(this).addClass('active').closest('.ui.menu').find('.item').not($(this)).removeClass('active');
+			}
+		});
+		
+	});
+</script>
+
+
 <section id="main" class="container">
 	<header>
 		<h2 ng-bind="event.event_name"></h2>
@@ -24,8 +37,38 @@
 		</div>	
 		<div class="row">
 				<h3> One line of description</h3>
-			</div>	
-		<div class="box">
+			</div>
+		<div class="ui tabular menu">
+  			<a ng-click="show_change(0)" class="active item">Info</a>
+  			<a ng-click="show_change(1)" class="item">Bullitin</a>
+  			<a ng-click="show_change(2)" class="item">Comments</a>
+  			
+		</div>
+		<div ng-hide="show[0]" class="box">		
+			<div class="row">
+				<div class="6u 12u(mobilep)">
+					<h3>Some more d</h3>
+					<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
+				</div>
+				<div class="6u 12u(mobilep)">
+					<h3>And another subheading</h3>
+					<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
+				</div>
+			</div>
+		</div>	
+		<div ng-hide="show[1]" class="box">		
+			<div class="row">
+				<div class="6u 12u(mobilep)">
+					<h3>Some more d</h3>
+					<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
+				</div>
+				<div class="6u 12u(mobilep)">
+					<h3>And another subheading</h3>
+					<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
+				</div>
+			</div>
+		</div>	
+		<div ng-hide="show[2]" class="box">		
 			<div class="row">
 				<div class="6u 12u(mobilep)">
 					<h3>Some more d</h3>

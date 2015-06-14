@@ -1,3 +1,4 @@
+<!DOCTYPE HTML>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('.menu a.item').on('click', function() {
@@ -5,9 +6,7 @@
 				$(this).addClass('active').closest('.ui.menu').find('.item').not($(this)).removeClass('active');
 			}
 		});
-		$('.datepicker').pickadate({
-			format: 'yyyy/mm/dd'
-		});
+		
 	});
 </script>
 <!-- Main -->
@@ -47,10 +46,10 @@
 				</div>
 				<div class="field">
 					<label>Birthdate</label>
-					<input class="datepicker" type="text" ng-model="birthdate" ng-value="">
+					<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="birthdate"/>
 				</div>
 			</div>
-			<div class="ui submit button">Update Information</div>
+			<div class="ui green submit button">Update Information</div>
 		</div>
 		<div ng-hide="show[1]">
 			<table class="ui celled table">
