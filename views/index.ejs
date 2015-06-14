@@ -31,6 +31,7 @@
         <script src="../css/semantic.js"></script>
         <link rel="stylesheet" href="css/semantic.css" />
         <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/app.css" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             <script type="text/javascript">
         $(document).ready(function(){
@@ -70,11 +71,14 @@
             <div class="content">
                 <div class="description">
                     <form>
-                        <div class="ui transparent input">
-                            <input ng-model="account" class="ui basic" type="text" placeholder="account">
+                        <p>Account</p>
+                        <div class="ui transparent input green basic button login">
+                            <input ng-model="account" class="login_input" type="text" placeholder="account">
                         </div>
-                        <div class="ui transparent input">
-                            <input ng-model="password" class="ui basic" type="password" placeholder="password">    
+                        <div class="ui horizontal divider"></div>
+                        <p>Password</p>
+                        <div class="ui transparent input green basic button login">
+                            <input ng-model="password"  class="login_input" type="password" placeholder="password">    
                         </div>
                     </form>
                 </div>

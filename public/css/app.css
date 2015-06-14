@@ -28,3 +28,10 @@
   content: "";
   padding: 0;
 }
+.ui.transparent.input.green.basic.button.login{
+  padding-top: 0px;
+  padding-left: 10px
+}
+.ui.transparent.input.green.basic.button.login > .login_input{
+  color: white;
+}
