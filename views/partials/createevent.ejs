@@ -1,3 +1,10 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.datepicker').pickadate({
+			format: 'yyyy/mm/dd'
+		});
+	});
+</script>
 <section id="main" class="container">
 	<div class="ui form segment">
 		<legend>Create Event</legend>
@@ -8,7 +15,7 @@
 			</div>
 			<div class="field">
 				<label>Event Date</label>
-				<input placeholder="Text Input" type="text" ng-model="event_date">
+				<input class="datepicker" type="text" ng-model="event_date">
 			</div>
 		</div>
 		<div class="two required fields">

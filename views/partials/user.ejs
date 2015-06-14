@@ -5,7 +5,9 @@
 				$(this).addClass('active').closest('.ui.menu').find('.item').not($(this)).removeClass('active');
 			}
 		});
-		$('.datepicker').pickadate();
+		$('.datepicker').pickadate({
+			format: 'yyyy/mm/dd'
+		});
 	});
 </script>
 <!-- Main -->
