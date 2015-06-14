@@ -139,11 +139,19 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
     		$scope.donation_list = result.data.data;
     		$scope.donation_count = $scope.donation_list.length;
     		$scope.donation_total = 0;
+    		console.log($scope.donation_list)
     		_.map($scope.donation_list, function(result){
 				$scope.donation_total+=result.amount;
 			});
 			$scope.progress = Math.round($scope.donation_total/$scope.event.goal * 100);
-			if($scope.progress>100){
+			if(isNaN($scope.progress)){
+				$scope.progress = 0;
+			}
+        	if($scope.event.goal==null){
+        		$scope.event.goal=0;
+        		$scope.progress=100;
+        	}
+			if($scope.progress > 100){
 				$scope.progress_bar = {"width": "100%"}
 			}
 			else{

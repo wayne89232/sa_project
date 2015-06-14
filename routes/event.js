@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var crypto = require('crypto');
 var Event = require('../models').Event;
+var User = require('../models').User;
 var Donation = require('../models').Donation;
 
 exports.add_event = function(req, res){
@@ -39,7 +40,12 @@ exports.list_event = function(req, res){
 }
 
 exports.donation_list = function(req, res){
-	Donation.findAll({where:{ event_id: req.params.event_id }}).then(function(result){
+	Donation.findAll({
+		where:{ 
+			event_id: req.params.event_id
+		},
+		include: [User] 
+	}).then(function(result){
 		donation_list = _.map(result, function(result){
 			return result.dataValues;
 		});

@@ -57,47 +57,41 @@
 		    <div class="label"><span ng-bind="progress"></span>% Funded</div>
 		</div>	
 		<div class="row">
-				<h3> One line of description</h3>
+				<h3>About the event</h3>
 			</div>
 		<div class="ui tabular menu">
   			<a ng-click="show_change(0)" class="active item">Info</a>
-  			<a ng-click="show_change(1)" class="item">Bullitin</a>
+  			<a ng-click="show_change(1)" class="item">Donates</a>
   			<a ng-click="show_change(2)" class="item">Comments</a>
   			
 		</div>
 		<div ng-hide="show[0]" class="box">		
 			<div class="row">
 				<div class="6u 12u(mobilep)">
-					<h3>Some more d</h3>
-					<p></p>
-				</div>
-				<div class="6u 12u(mobilep)">
-					<h3>And another subheading</h3>
-					<p></p>
+					<h3>Description</h3>
+					<p ng-bind="event.description"></p>
 				</div>
 			</div>
 		</div>	
 		<div ng-hide="show[1]" class="box">		
 			<div class="row">
 				<div class="6u 12u(mobilep)">
-					<h3>Some more d</h3>
-					<p></p>
+					<h3>Donates</h3>
 				</div>
-				<div class="6u 12u(mobilep)">
-					<h3>And another subheading</h3>
-					<p></p>
-				</div>
+			</div>
+			<div class="row" ng-repeat="donate in donation_list">
+				<div>
+					<i class="usd icon"></i><span ng-bind="donate.amount"></span>
+				</div>	
+				<span>By <span ng-bind="donate.User.user_name"></span></span>
+				<span>At <span ng-bind="donate.date"></span></span>
 			</div>
 		</div>	
 		<div ng-hide="show[2]" class="box">		
 			<div class="row">
 				<div class="6u 12u(mobilep)">
-					<h3>Some more d</h3>
-					<p></p>
-				</div>
-				<div class="6u 12u(mobilep)">
-					<h3>And another subheading</h3>
-					<p></p>
+					<h3>Comments</h3>
+
 				</div>
 			</div>
 		</div>	
