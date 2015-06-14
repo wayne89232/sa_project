@@ -33,6 +33,10 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/user',
         controller: 'User'
     }).
+    when('/Createevent', {
+        templateUrl: 'partials/createevent',
+        // controller: 'User'
+    }).
     otherwise({
         redirectTo: '/home'
     });
