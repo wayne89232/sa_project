@@ -7,7 +7,6 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 		$scope.local_user = $window.localStorage.getItem("account");
 		$scope.user_type = $window.localStorage.getItem("user_type");
 	} 	
-
 	$scope.login = function(){
 		if($scope.account != null && $scope.password != null){
 	            var data = {
@@ -23,10 +22,11 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 					$window.localStorage.setItem("is_login", true);
 					$window.localStorage.setItem("account", result.data.user);
 					$window.localStorage.setItem("user_type", result.data.type);
+					$window.localStorage.setItem("user_id", result.data.user_id);
 					$window.location.reload();
 				}
 				else{
-					alert(result.data.msg)
+					alert(result.data.msg);
 					$window.location.reload();
 				}
 		    });	
@@ -94,6 +94,33 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 			$scope.current = num;
 		}
 	}
+}).controller('Donate', function ($scope, $http, $location, $window, $routeParams) {
+    $scope.donate = function(){
+    	var dateObj = new Date();
+		var month = dateObj.getUTCMonth() + 1;
+		var day = dateObj.getUTCDate();
+		var year = dateObj.getUTCFullYear();
+		var newdate = year + "/" + month + "/" + day;
+        var data = {
+        	user_id: $window.localStorage.getItem("user_id"),
+        	event_id:  $routeParams.event_id,
+            amount: $scope.amount,
+            date: newdate
+        };
+        if($scope.amount == parseInt($scope.amount, 10) && !isNaN(parseInt($scope.amount, 10))){
+	 	    $http({
+		        method: "POST", 
+		        url: '/api/donate',
+		        data: data
+		    }).then(function(result){
+		    	$location.path('/event/'+result.data.data.event_id);
+		    });   	       	
+        }
+        else{
+        	alert("enter valid amount");
+        }
+
+    }
 }).controller('Event', function ($scope, $http, $location, $window, $routeParams) {
 	$scope.event_list = []; 
     $http({
@@ -111,10 +138,17 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
         $scope.event = result.data;
         console.log($scope.event);
     });
+    $scope.go_donate = function(){
+    	$location.path('/Donate/'+$routeParams.id);
+    }	
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){
-    	console.log($scope.event_date);
-    	if($scope.event_name != null && $scope.event_date != null && $scope.goal != null){
+    	console.log($scope.goal)
+    	console.log(parseInt($scope.goal, 10))
+    	if($scope.goal != parseInt($scope.goal, 10) || isNaN(parseInt($scope.goal, 10))){
+    		alert("enter valid amount in your goal");
+    	}
+    	else if($scope.event_name != null && $scope.event_date != null && $scope.goal != null){
             var data = {
                 event_name: $scope.event_name, 
                 event_date: $scope.event_date,
@@ -132,7 +166,6 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
             });
         }
         else{
-        	console.log($scope.event_name +$scope.event_date+$scope.goal)
             alert("Fill in all entities!");
         }
     }

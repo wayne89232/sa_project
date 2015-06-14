@@ -3,18 +3,24 @@
 // var Example = require('../models').Example;
 var _ = require('underscore');
 var User = require('../models').User;
+var Donation = require('../models').Donation;
 var crypto = require('crypto');
 
-exports.checkLogin = function(req, res, next){
-	if(req.session.user == undefined){
-		next();
-	}
-	else{
-		res.json({
-			error:true,
-			msg:"Login first"
-		});
-	}
+exports.donate = function(req, res){
+    var new_id = crypto.randomBytes(20).toString('hex');
+    Donation.create({
+        donation_id: new_id,
+        user_id: req.body.user_id,
+        event_id: req.body.event_id,
+        date: req.body.date,
+        amount: req.body.amount
+    }).then(function(result){
+        res.json({
+            data: result.dataValues
+        });
+    }).error(function(err){
+        console.log(err);
+    })	
 }
 
 exports.login = function (req, res){
@@ -40,7 +46,8 @@ exports.login = function (req, res){
 			res.json({
 				success: true,
                 user: user.dataValues.account,
-                type: user.dataValues.user_type
+                type: user.dataValues.user_type,
+                user_id: user.dataValues.user_id
 			});
 		}
 	});
@@ -66,10 +73,6 @@ exports.register = function(req, res){
             	email: req.body.email,
             	user_type: "donor"
             }).then(function(user){
-                var user = _.omit(user.dataValues, 'password', 'createdAt', 'updatedAt');
-                console.log(user);
-                req.session.user = user;
-                req.session.isLogin = true;
                 res.redirect('/');
        		}).error(function(err){
             	console.log(err);

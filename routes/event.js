@@ -4,7 +4,6 @@ var Event = require('../models').Event;
 
 exports.add_event = function(req, res){
 	var new_id = crypto.randomBytes(20).toString('hex');
-	console.log(new_id)
 	Event.create({
 		event_id: new_id,
 		event_name: req.body.event_name,

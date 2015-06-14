@@ -86,6 +86,7 @@ app.get('/partials/:name', routes.partials);
 app.post('/api/register', api.register);
 app.post('/api/login', api.login);
 app.post('/event/add_event', event.add_event);
+app.post('/api/donate', api.donate);
 app.get('/event/list_event', event.list_event);
 app.get('/event/show_event/:event_id', event.show_event);
 

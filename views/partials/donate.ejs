@@ -8,26 +8,22 @@
 		
 			<!-- Main -->
 				<section id="main" class="container">
-					<header>
-						<h2>Event Name</h2>
-						<p>By _______</p>
-					</header>
 					<div class="ui form segment">
 					<h3 class="ui blue header">Pledge</h3>
 					<div class="four required fields">
 						<div class="field">
 							<label>Enter your pledge amount!</label>
-							<input placeholder="It's up to you" type="text" ng-model="">
+							<input placeholder="It's up to you" type="text" ng-model="amount">
 						</div>
 
 					</div>
 					<h3 class="ui blue header">Any thing want to tell us?</h3>
 
-					<div class="required field" ng-model="">
+					<div class="required field" >
 						
 						<textarea></textarea>
 					</div>
-					<div class="ui green submit button">Submit</div>
+					<div class="ui green submit button" ng-click="donate()">Submit</div>
 				</div>
 									
 					
