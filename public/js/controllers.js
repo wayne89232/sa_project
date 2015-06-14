@@ -147,12 +147,16 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 			if(isNaN($scope.progress)){
 				$scope.progress = 0;
 			}
+			// if($scope.progress>100){
+			// 	$scope.progress = 100;
+			// }
         	if($scope.event.goal==null){
         		$scope.event.goal=0;
         		$scope.progress=100;
         	}
 			if($scope.progress > 100){
-				$scope.progress_bar = {"width": "100%"}
+				$scope.progress_bar = {"width": "100%"};
+				$scope.progress = 100;
 			}
 			else{
 				$scope.progress_bar = {"width": $scope.progress+"%"}
