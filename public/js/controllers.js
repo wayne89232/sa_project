@@ -87,7 +87,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
 }).controller('User', function ($scope, $http, $location, $window, $routeParams) {
     $scope.current = 0;
 	$scope.show = [false, true, true, true, true];
-	$scope.show = function(num){
+	$scope.show_change = function(num){
 		if(num != $scope.current){
 			$scope.show[$scope.current] = true;
 			$scope.show[num] = false;

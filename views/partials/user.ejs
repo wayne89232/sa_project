@@ -5,59 +5,50 @@
 				$(this).addClass('active').closest('.ui.menu').find('.item').not($(this)).removeClass('active');
 			}
 		});
+		$('.datepicker').pickadate();
 	});
 </script>
 <!-- Main -->
 	<section id="main" class="container">
 		<div class="ui secondary pointing four item demo menu">
-  			<a ng-click="show(0)" class="active item">Info</a>
-  			<a ng-click="show(1)" class="item">Donation</a>
-  			<a ng-click="show(2)" class="item">Track List</a>
-  			<a ng-click="show(3)" class="item">Community</a>
+  			<a ng-click="show_change(0)" class="active item">Info</a>
+  			<a ng-click="show_change(1)" class="item">Donation</a>
+  			<a ng-click="show_change(2)" class="item">Track List</a>
+  			<a ng-click="show_change(3)" class="item">Community</a>
 		</div>
-		<div ng-hide="show[0]">
-			<legend>Personal information</legend>
-			<form>
-				<div>
+		<div ng-hide="show[0]" class="ui form segment">
+			<legend>Personal Information</legend>
+			<div class="two fields">
+				<div class="field">
 					<label>Account</label>
-					<div>
-						<input id="account" readonly>
-					</div>
+					<input placeholder="Text Input" ng-model="account" readonly>
 				</div>
-				<div>
+				<div class="field">
 					<label>Password</label>
-					<div>
-						<input type="password" id="password">
-					</div>
+					<input placeholder="Text Input" type="password" ng-model="password">
 				</div>
-				<div>
+			</div>
+			<div class="two required fields">
+				<div class="field">
 					<label>Name</label>
-					<div>
-						<input type="text" id="user_name">
-					</div>
+					<input placeholder="Text Input" type="text" ng-model="user_name">
 				</div>
-				<div>
+				<div class="field">
 					<label>Email</label>
-					<div>
-						<input type="text" id="email">
-					</div>
+					<input placeholder="Text Input" type="text" ng-model="email">
 				</div>
-				<div>
+			</div>
+			<div class="two required fields">
+				<div class="field">
 					<label>Photo</label>
-					<div>
-						<input type="text" id="photo_url">
-					</div>
+					<input  placeholder="Text Input" type="text" ng-model="photo_url">
 				</div>
-				<div>
+				<div class="field">
 					<label>Birthdate</label>
-					<div>
-						<input type="text" id="birthdate">
-					</div>
+					<input class="datepicker" type="text" ng-model="birthdate" ng-value="">
 				</div>
-				<div>
-					<input type="submit">
-				</div>
-			</form>
+			</div>
+			<div class="ui submit button">Update Information</div>
 		</div>
 		<div ng-hide="show[1]">
 			<table class="ui celled table">
