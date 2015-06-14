@@ -127,7 +127,6 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
         method: "GET", 
         url: '/event/list_event', 
     }).then(function(result){
-    	console.log(result.data.data);
     	$scope.event_list = result.data.data;
     });
     $scope.show_event = function(id){
@@ -136,15 +135,12 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 }).controller('show_event', function ($scope, $http, $location, $window, $routeParams) {
 	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).success(function(result){
         $scope.event = result.data;
-        console.log($scope.event);
     });
     $scope.go_donate = function(){
     	$location.path('/Donate/'+$routeParams.id);
     }	
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){
-    	console.log($scope.goal)
-    	console.log(parseInt($scope.goal, 10))
     	if($scope.goal != parseInt($scope.goal, 10) || isNaN(parseInt($scope.goal, 10))){
     		alert("enter valid amount in your goal");
     	}
