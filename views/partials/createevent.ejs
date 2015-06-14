@@ -4,28 +4,33 @@
 			format: 'yyyy/mm/dd'
 		});
 	});
+
 </script>
 <section id="main" class="container">
 	<div class="ui form segment">
 		<legend>Create Event</legend>
-		<div class="two required fields">
+		<div class="two  fields">
 			<div class="field">
 				<label>Event Name</label>
-				<input placeholder="Text Input" type="text" ng-model="event_name">
+				<input placeholder="What's your event?" type="text" ng-model="event_name">
 			</div>
+			<div class="field">
+				<label>Event Holder</label>
+				<input placeholder="Who holds the event?" type="text" ng-model="event_holder">
+			</div>
+		</div>
+		<div class="three required fields">
 			<div class="field">
 				<label>Event Date</label>
 				<input class="datepicker" type="text" ng-model="event_date">
 			</div>
-		</div>
-		<div class="two required fields">
 			<div class="field">
 				<label>Event Goal</label>
-				<input placeholder="Text Input" type="text" ng-model="goal">
+				<input placeholder="How much do you want to fund?" type="text" ng-model="goal">
 			</div>
 			<div class="field">
 				<label>Event Location</label>
-				<input placeholder="Text Input" type="text" ng-model="location">
+				<input placeholder="Where's the event?" type="text" ng-model="location">
 			</div>
 		</div>
 		<div class="required field">

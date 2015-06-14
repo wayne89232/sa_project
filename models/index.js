@@ -38,7 +38,7 @@ Friendship.belongsTo(User, {foreignKey: 'user_id'});
 
 User.hasMany(Friendship, {foreignKey: 'friend_id'});
 Friendship.belongsTo(User, {foreignKey: 'user_id'});
-//export for use in other directory
+// export for use in other directory
 // exports.Example = Example;
 
 exports.Bulletin = Bulletin;
