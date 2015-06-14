@@ -1,26 +1,22 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.menu a.item').on('click', function() {
+			if(!$(this).hasClass('dropdown')) {
+				$(this).addClass('active').closest('.ui.menu').find('.item').not($(this)).removeClass('active');
+			}
+		});
+	});
+</script>
 <!-- Main -->
 	<section id="main" class="container">
-		<header>
-		</header>
-		<div class="6u 12u(narrower)">
-			<ul>
-				<li>
-					<a href="">Info</a>
-				</li>
-				<li>
-					<a href="">Donation</a>
-				</li>
-				<li>
-					<a href="">Track List</a>
-				</li>
-				<li>
-					<a href="">Friends(Community)</a>
-				</li>
-			</ul>
-
+		<div class="ui secondary pointing four item demo menu">
+  			<a ng-click="show(0)" class="active item">Info</a>
+  			<a ng-click="show(1)" class="item">Donation</a>
+  			<a ng-click="show(2)" class="item">Track List</a>
+  			<a ng-click="show(3)" class="item">Community</a>
 		</div>
-		<div>
-			<legend>Personal information:</legend>
+		<div ng-hide="show[0]">
+			<legend>Personal information</legend>
 			<form>
 				<div>
 					<label>Account</label>
@@ -63,7 +59,7 @@
 				</div>
 			</form>
 		</div>
-		<div>
+		<div ng-hide="show[1]">
 			<table class="ui celled table">
     			<thead>
     				<tr>
@@ -75,40 +71,40 @@
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="event in donations | filter:search">
+					<!-- <tr ng-repeat="event in donations | filter:search">
 						<td ng-bind = "event.name"></td>
 						<td ng-bind = "event.event_date"></td>
 						<td ng-bind = "event.location"></td>
 						<td ng-bind = "event.amount"></td>
 						<a href=""><td>...</td></a>
-					</tr>
+					</tr> -->
 				</tbody>
    			</table>
 		</div>
-		<div>
-			<div ng-repeat="event in trackings | filter:search">
+		<div ng-hide="show[2]">
+			<!-- <div ng-repeat="event in trackings | filter:search">
 				<a>
 					<div ng-bind = "event.photo_url"></div>
 					<h3 ng-bind = "event.event_name"></h3>
 					<p ng-bind = "event.event_date"></p>
 					<p ng-bind = "event.location"></p>
 					<p ng-bind = "event.expire_time"></p>
-					<div>
+					<div> -->
 						<!-- Progress Bar -->
 					</div>
 				</a>
 			</div>
 				
 		</div>
-		<div>
+		<div ng-hide="show[3]">
 			<table class="ui celled table">
     			<tbody>
-					<tr ng-repeat="friend in friends | filter:search">
+					<!-- <tr ng-repeat="friend in friends | filter:search">
 						<a><td>
 							<div ng-bind = "friend.photo_url"></div>
 							<div ng-bind = "friend.user_name"></div>
 						</td></a>
-					</tr>
+					</tr> -->
 				</tbody>
    			</table>
 		</div>
