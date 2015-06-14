@@ -102,25 +102,33 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
     }).then(function(result){
     	console.log(result.data.data);
     	$scope.event_list = result.data.data;
-    });	
+    });
+    $scope.show_event = function(id){
+    	$location.path('/event/'+id);
+    }	
+}).controller('show_event', function ($scope, $http, $location, $window, $routeParams) {
+	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).success(function(result){
+        $scope.event = result.data;
+        console.log($scope.event);
+    });
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){
     	if($scope.event_name != null && $scope.event_date != null && $scope.goal != null){
-	            var data = {
-	                event_name: $scope.event_name, 
-	                event_date: $scope.event_date,
-	                event_goal: $scope.goal,
-	                location:$scope.location,
-	                description: $scope.description
-	            };
-	            $http({
-	                method: "POST", 
-	                url: '/event/add_event', 
-	                data: data
-	            }).then(function(result){
-	            	$window.location.reload();
-	            	$location.path("/Event");
-	            });
+            var data = {
+                event_name: $scope.event_name, 
+                event_date: $scope.event_date,
+                event_goal: $scope.goal,
+                location:$scope.location,
+                description: $scope.description
+            };
+            $http({
+                method: "POST", 
+                url: '/event/add_event', 
+                data: data
+            }).then(function(result){
+            	$window.location.reload();
+            	$location.path("/Event");
+            });
         }
         else{
         	console.log($scope.event_name +$scope.date+$scope.goal)

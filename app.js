@@ -87,6 +87,7 @@ app.post('/api/register', api.register);
 app.post('/api/login', api.login);
 app.post('/event/add_event', event.add_event);
 app.get('/event/list_event', event.list_event);
+app.get('/event/show_event/:event_id', event.show_event);
 
 
 // redirect all others to the index (HTML5 history)
