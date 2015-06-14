@@ -23,7 +23,11 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/Showevent', {
         templateUrl: 'partials/showevent',
-        controller: 'AppCtrl'
+        // controller: 'AppCtrl'
+    }).
+    when('/Test', {
+        templateUrl: 'partials/user',
+        // controller: 'AppCtrl'
     }).
     otherwise({
         redirectTo: '/home'

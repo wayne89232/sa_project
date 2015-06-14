@@ -4,7 +4,7 @@ exports.Donation = function(Sequelize, sequelize){
 		user_id: Sequelize.STRING,
 		event_id: Sequelize.STRING,
 		date: Sequelize.STRING,
-		ammount: Sequelize.INTEGER
+		amount: Sequelize.INTEGER
 	},{
 		tableName: 'donation'
 	});
