@@ -21,6 +21,10 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/account',
         controller: 'Create_account'
     }).
+    when('/Test', {
+        templateUrl: 'partials/user',
+        controller: 'AppCtrl'
+    }).
     otherwise({
         redirectTo: '/home'
     });
