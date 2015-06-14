@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function ($rootScope, $window, $scope, $http, $location) {
+angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller('AppCtrl', function ($rootScope, $window, $scope, $http, $location) {
     
 	if($window.localStorage.getItem("is_login")){
 		$scope.is_login = true;
@@ -131,7 +131,7 @@ angular.module('myApp.controllers', ['ngRoute']).controller('AppCtrl', function 
             });
         }
         else{
-        	console.log($scope.event_name +$scope.date+$scope.goal)
+        	console.log($scope.event_name +$scope.event_date+$scope.goal)
             alert("Fill in all entities!");
         }
     }

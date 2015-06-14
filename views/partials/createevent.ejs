@@ -1,8 +1,12 @@
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.datepicker').pickadate({
-			format: 'yyyy/mm/dd'
-		});
+		// $('.datepicker').pickadate({
+		// 	format: 'yyyy/mm/dd'
+		// });
+		// $('.datepicker').change(function(){
+		// 	console.log($('.datepicker').val());
+		// 	$('.datepicker').attr("ng-model", $('.datepicker').val());
+		// });
 	});
 </script>
 <section id="main" class="container">
@@ -15,7 +19,8 @@
 			</div>
 			<div class="field">
 				<label>Event Date</label>
-				<input class="datepicker" type="text" ng-model="event_date">
+				<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="event_date"/>
+				<!-- <input class="datepicker" type="text" ng-model="event_date" datepicker> -->
 			</div>
 		</div>
 		<div class="two required fields">

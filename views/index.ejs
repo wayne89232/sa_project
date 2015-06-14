@@ -40,11 +40,12 @@
         <script src="../js/lib/pickadate/lib/picker.js"></script>
         <script src="../js/lib/pickadate/lib/picker.date.js"></script>
         <script src="../js/lib/pickadate/lib/picker.time.js"></script>
-            <script type="text/javascript">
-        $(document).ready(function(){
-            $('.modal').modal();
-            $('.basic.modal').modal('attach events', '.minimal.button');
-        });
+        <script src="../js/angular-datepicker.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.modal').modal();
+                $('.basic.modal').modal('attach events', '.minimal.button');
+            });
         </script>
     </head>
     <body ng-controller="AppCtrl">
