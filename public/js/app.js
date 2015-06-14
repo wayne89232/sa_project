@@ -25,6 +25,10 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/showevent',
         // controller: 'AppCtrl'
     }).
+    when('/Donate', {
+        templateUrl: 'partials/donate'
+
+    }).
     when('/User', {
         templateUrl: 'partials/user',
         controller: 'User'
