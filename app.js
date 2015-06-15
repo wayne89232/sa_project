@@ -9,6 +9,7 @@ var express = require('express'),
     routes = require('./routes'),
     api = require('./routes/api'),
     event = require('./routes/event'),
+    user = require('./routes/user'),
     multer  = require('multer'),
     cookieParser=require('cookie-parser'),
     session = require('express-session'),
@@ -91,6 +92,8 @@ app.get('/event/list_event', event.list_event);
 app.get('/event/show_event/:event_id', event.show_event);
 app.get('/event/donation_list/:event_id', event.donation_list);
 app.get('/event/comment_list/:event_id', event.comment_list);
+app.get('/user/donation_list/:user_id', user.donation_list);
+app.get('/user/user_info/:user_id', user.user_info);
 
 
 // redirect all others to the index (HTML5 history)

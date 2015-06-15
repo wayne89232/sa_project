@@ -38,6 +38,7 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 	$scope.logout = function(){
 		$window.localStorage.clear();
 		$window.location.reload();
+        $location.path('/');
 	}
 	$scope.donor_identify = function(){
 		if($scope.user_type=="donor"){
@@ -88,6 +89,19 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
         }
     }
 }).controller('User', function ($scope, $http, $location, $window, $routeParams) {
+	$http({ method:"GET", url:'/user/user_info/' + $routeParams.id }).then(function(user_info){
+        $http({ method:"GET", url:'/user/donation_list/' + $routeParams.id }).then(function(result){
+
+			$scope.user_info = user_info.data.data;
+			$scope.donation_list = result.data.data;
+    	});
+    });
+    if($routeParams.id==$window.localStorage.getItem("user_id")){
+    	$scope.is_user=false;
+    }
+    else{
+    	$scope.is_user=true;
+    }
     $scope.current = 0;
 	$scope.show = [false, true, true, true, true];
 	$scope.show_change = function(num){

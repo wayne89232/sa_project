@@ -11,7 +11,7 @@
 </script>
 <!-- Main -->
 	<section id="main" class="container">
-		　<div ng-hide="user[0]">
+		　<div ng-hide="is_user">
 			<div class="ui secondary pointing four item demo menu">
 	  			<a ng-click="show_change(0)" class="active item">Info</a>
 	  			<a ng-click="show_change(1)" class="item">Donation</a>
@@ -23,52 +23,51 @@
 				<div class="two fields">
 					<div class="field">
 						<label>Account</label>
-						<input placeholder="Text Input" ng-model="account" readonly>
+						<input placeholder="Text Input" ng-model="user_info.account" readonly>
 					</div>
 					<div class="field">
 						<label>Password</label>
-						<input placeholder="Text Input" type="password" ng-model="password">
+						<input placeholder="Text Input" type="password" ng-model="user_info.password" readonly>
 					</div>
 				</div>
 				<div class="two required fields">
 					<div class="field">
 						<label>Name</label>
-						<input placeholder="Text Input" type="text" ng-model="user_name">
+						<input placeholder="Text Input" type="text" ng-model="user_info.user_name">
 					</div>
 					<div class="field">
 						<label>Email</label>
-						<input placeholder="Text Input" type="text" ng-model="email">
+						<input placeholder="Text Input" type="text" ng-model="user_info.email">
 					</div>
 				</div>
 				<div class="two required fields">
-					<div class="field">
+					<!-- <div class="field">
 						<label>Photo</label>
 						<input  placeholder="Text Input" type="text" ng-model="photo_url">
-					</div>
+					</div> -->
 					<div class="field">
 						<label>Birthdate</label>
-						<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="birthdate"/>
+						<input type="text"  ng-model="user_info.birthdate"/>
 					</div>
-			<div class="ui green submit button">Update Information</div>
-		</div>
+				</div>
+				<div class="required fields">
+					<div class="ui green submit button">Update Information</div>
+				</div>
+			</div>
 		<div ng-hide="show[1]">
 			<table class="ui celled table">
     			<thead>
     				<tr>
     					<th>Event</th>
-    					<th>Date</th>
-    					<th>Location</th>
     					<th>Donated Amount</th>
-    					<th>Detail</th>
+    					<th>Date</th>
     				</tr>
     			</thead>
     			<tbody>
-					<tr ng-repeat="event in donations | filter:search">
-						<td ng-bind = "event.name"></td>
-						<td ng-bind = "event.event_date"></td>
-						<td ng-bind = "event.location"></td>
-						<td ng-bind = "event.amount"></td>
-						<a href=""><td>...</td></a>
+					<tr ng-repeat="donation in donation_list">
+						<td ng-bind = "donation.Event.event_name"></td>
+						<td ng-bind = "donation.amount"></td>
+						<td ng-bind = "donation.date"></td>
 					</tr>
 				</tbody>
    			</table>
@@ -85,6 +84,8 @@
 						<!-- Progress Bar -->
 					</div>
 				</a>
+			</div>
+		</div>
 			<div ng-hide="show[3]">
 				<table class="ui celled table">
 	    			<tbody>
@@ -98,29 +99,27 @@
 	   			</table>
 			</div>
 		</div>
-		<div  ng-hide="user[1]">
+		<div  ng-show="is_user">
 			<div class="ui secondary pointing one item demo menu">
 	  			<a class="active item">Donation</a>
 	  		</div>
 			<div>
-				<table class="ui celled table">
-	    			<thead>
-	    				<tr>
-	    					<th>Event</th>
-	    					<th>Date</th>
-	    					<th>Location</th>
-	    					<th>Detail</th>
-	    				</tr>
-	    			</thead>
-	    			<tbody>
-						<tr ng-repeat="event in donations | filter:search">
-							<td ng-bind = "event.name"></td>
-							<td ng-bind = "event.event_date"></td>
-							<td ng-bind = "event.location"></td>
-							<a href=""><td>...</td></a>
-						</tr>
-					</tbody>
-	   			</table>
+			<table class="ui celled table">
+    			<thead>
+    				<tr>
+    					<th>Event</th>
+    					<th>Donated Amount</th>
+    					<th>Date</th>
+    				</tr>
+    			</thead>
+    			<tbody>
+					<tr ng-repeat="donation in donation_list">
+						<td ng-bind = "donation.Event.event_name"></td>
+						<td ng-bind = "donation.amount"></td>
+						<td ng-bind = "donation.date"></td>
+					</tr>
+				</tbody>
+   			</table>
 			</div>
 		</div>
 	</section>
