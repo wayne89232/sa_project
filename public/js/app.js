@@ -29,7 +29,7 @@ config(function ($routeProvider, $locationProvider) {
         templateUrl: 'partials/donate',
         controller: 'Donate'
     }).
-    when('/User', {
+    when('/user/:id', {
         templateUrl: 'partials/user',
         controller: 'User'
     }).

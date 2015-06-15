@@ -11,44 +11,44 @@
 </script>
 <!-- Main -->
 	<section id="main" class="container">
-		<div class="ui secondary pointing four item demo menu">
-  			<a ng-click="show_change(0)" class="active item">Info</a>
-  			<a ng-click="show_change(1)" class="item">Donation</a>
-  			<a ng-click="show_change(2)" class="item">Track List</a>
-  			<a ng-click="show_change(3)" class="item">Community</a>
-		</div>
-		<div ng-hide="show[0]" class="ui form segment">
-			<legend>Personal Information</legend>
-			<div class="two fields">
-				<div class="field">
-					<label>Account</label>
-					<input placeholder="Text Input" ng-model="account" readonly>
-				</div>
-				<div class="field">
-					<label>Password</label>
-					<input placeholder="Text Input" type="password" ng-model="password">
-				</div>
+		　<div ng-hide="user[0]">
+			<div class="ui secondary pointing four item demo menu">
+	  			<a ng-click="show_change(0)" class="active item">Info</a>
+	  			<a ng-click="show_change(1)" class="item">Donation</a>
+	  			<a ng-click="show_change(2)" class="item">Track List</a>
+	  			<a ng-click="show_change(3)" class="item">Community</a>
 			</div>
-			<div class="two required fields">
-				<div class="field">
-					<label>Name</label>
-					<input placeholder="Text Input" type="text" ng-model="user_name">
+			<div ng-hide="show[0]" class="ui form segment">
+				<legend>Personal Information</legend>
+				<div class="two fields">
+					<div class="field">
+						<label>Account</label>
+						<input placeholder="Text Input" ng-model="account" readonly>
+					</div>
+					<div class="field">
+						<label>Password</label>
+						<input placeholder="Text Input" type="password" ng-model="password">
+					</div>
 				</div>
-				<div class="field">
-					<label>Email</label>
-					<input placeholder="Text Input" type="text" ng-model="email">
+				<div class="two required fields">
+					<div class="field">
+						<label>Name</label>
+						<input placeholder="Text Input" type="text" ng-model="user_name">
+					</div>
+					<div class="field">
+						<label>Email</label>
+						<input placeholder="Text Input" type="text" ng-model="email">
+					</div>
 				</div>
-			</div>
-			<div class="two required fields">
-				<div class="field">
-					<label>Photo</label>
-					<input  placeholder="Text Input" type="text" ng-model="photo_url">
-				</div>
-				<div class="field">
-					<label>Birthdate</label>
-					<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="birthdate"/>
-				</div>
-			</div>
+				<div class="two required fields">
+					<div class="field">
+						<label>Photo</label>
+						<input  placeholder="Text Input" type="text" ng-model="photo_url">
+					</div>
+					<div class="field">
+						<label>Birthdate</label>
+						<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="birthdate"/>
+					</div>
 			<div class="ui green submit button">Update Information</div>
 		</div>
 		<div ng-hide="show[1]">
@@ -85,19 +85,42 @@
 						<!-- Progress Bar -->
 					</div>
 				</a>
+			<div ng-hide="show[3]">
+				<table class="ui celled table">
+	    			<tbody>
+						<tr ng-repeat="friend in friends | filter:search">
+							<a><td>
+								<div ng-bind = "friend.photo_url"></div>
+								<div ng-bind = "friend.user_name"></div>
+							</td></a>
+						</tr>
+					</tbody>
+	   			</table>
 			</div>
-				
 		</div>
-		<div ng-hide="show[3]">
-			<table class="ui celled table">
-    			<tbody>
-					<tr ng-repeat="friend in friends | filter:search">
-						<a><td>
-							<div ng-bind = "friend.photo_url"></div>
-							<div ng-bind = "friend.user_name"></div>
-						</td></a>
-					</tr>
-				</tbody>
-   			</table>
+		<div  ng-hide="user[1]">
+			<div class="ui secondary pointing one item demo menu">
+	  			<a class="active item">Donation</a>
+	  		</div>
+			<div>
+				<table class="ui celled table">
+	    			<thead>
+	    				<tr>
+	    					<th>Event</th>
+	    					<th>Date</th>
+	    					<th>Location</th>
+	    					<th>Detail</th>
+	    				</tr>
+	    			</thead>
+	    			<tbody>
+						<tr ng-repeat="event in donations | filter:search">
+							<td ng-bind = "event.name"></td>
+							<td ng-bind = "event.event_date"></td>
+							<td ng-bind = "event.location"></td>
+							<a href=""><td>...</td></a>
+						</tr>
+					</tbody>
+	   			</table>
+			</div>
 		</div>
 	</section>

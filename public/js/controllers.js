@@ -55,6 +55,9 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 			return false;
 		}
 	}
+    $scope.user_info = function(){
+    	$location.path('/user/'+$window.localStorage.getItem("user_id"));
+    }	
 }).controller('Create_account', function ($scope, $http, $location, $window, $routeParams) {
     $scope.register = function(){
     	if($scope.account != null && $scope.password != null){
