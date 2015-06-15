@@ -7,6 +7,15 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 		$scope.local_user = $window.localStorage.getItem("account");
 		$scope.user_type = $window.localStorage.getItem("user_type");
 	} 	
+    $http({
+        method: "GET", 
+        url: '/event/list_event', 
+    }).then(function(result){
+    	$scope.home_event_list = result.data.data;
+    	if($scope.home_event_list.length>3){
+    		$scope.home_event_list = $scope.home_event_list.slice(0,3)
+    	}
+    });
 	$scope.login = function(){
 		if($scope.account != null && $scope.password != null){
 	            var data = {
