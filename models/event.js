@@ -2,7 +2,7 @@ exports.Event = function(Sequelize, sequelize){
 	return sequelize.define('Event', {
 		event_id: { type: Sequelize.STRING, primaryKey: true }, 
 		event_name: Sequelize.STRING ,
-		event_holder: Sequelize.STRING ,
+		event_holder: Sequelize.STRING,
 		photo_url: Sequelize.STRING,
 		event_date: Sequelize.STRING,
 		expire_time: Sequelize.STRING,

@@ -105,6 +105,7 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
         	user_id: $window.localStorage.getItem("user_id"),
         	event_id:  $routeParams.event_id,
             amount: $scope.amount,
+            comment: $scope.comment,
             date: newdate
         };
         if($scope.amount == parseInt($scope.amount, 10) && !isNaN(parseInt($scope.amount, 10))){
@@ -133,34 +134,32 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
     	$location.path('/event/'+id);
     }	
 }).controller('show_event', function ($scope, $http, $location, $window, $routeParams) {
-	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).then(function(result){
-        $scope.event = result.data.data;
+	$http({ method:"GET", url:'/event/show_event/' + $routeParams.id }).then(function(events){
         $http({ method:"GET", url:'/event/donation_list/' + $routeParams.id }).then(function(result){
-    		$scope.donation_list = result.data.data;
-    		$scope.donation_count = $scope.donation_list.length;
-    		$scope.donation_total = 0;
-    		console.log($scope.donation_list)
-    		_.map($scope.donation_list, function(result){
-				$scope.donation_total+=result.amount;
-			});
-			$scope.progress = Math.round($scope.donation_total/$scope.event.goal * 100);
-			if(isNaN($scope.progress)){
-				$scope.progress = 0;
-			}
-			// if($scope.progress>100){
-			// 	$scope.progress = 100;
-			// }
-        	if($scope.event.goal==null){
-        		$scope.event.goal=0;
-        		$scope.progress=100;
-        	}
-			if($scope.progress > 100){
-				$scope.progress_bar = {"width": "100%"};
-				$scope.progress = 100;
-			}
-			else{
-				$scope.progress_bar = {"width": $scope.progress+"%"}
-			}
+    		$http({ method:"GET", url:'/event/comment_list/' + $routeParams.id }).then(function(comments){
+	    		$scope.event = events.data.data;
+	    		$scope.donation_list = result.data.data;
+	    		$scope.donation_count = $scope.donation_list.length;
+	    		$scope.donation_total = 0;
+	    		_.map($scope.donation_list, function(result){
+					$scope.donation_total+=result.amount;
+				});
+				$scope.progress = Math.round($scope.donation_total/$scope.event.goal * 100);
+				if(isNaN($scope.progress)){
+					$scope.progress = 0;
+				}
+	        	if($scope.event.goal==null){
+	        		$scope.event.goal=0;
+	        		$scope.progress=100;
+	        	}
+				if($scope.progress > 100){
+					$scope.progress_bar = {"width": "100%"};
+				}
+				else{
+					$scope.progress_bar = {"width": $scope.progress+"%"}
+				}
+				$scope.comments = comments.data.data;
+    		});
     	});
     });
 
@@ -174,7 +173,12 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 		}
 	}
 	$scope.go_donate = function(){
-    	$location.path('/Donate/'+$routeParams.id);
+		if($window.localStorage.getItem("is_login")){
+			$location.path('/Donate/'+$routeParams.id);
+		}
+		else{
+			alert("Please login");
+		}    	
     }	
 }).controller('Create_event', function ($scope, $http, $location, $window, $routeParams) {
     $scope.add_event = function(){

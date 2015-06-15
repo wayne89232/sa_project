@@ -3,6 +3,7 @@
 // var Example = require('../models').Example;
 var _ = require('underscore');
 var User = require('../models').User;
+var Comment = require('../models').Comment;
 var Donation = require('../models').Donation;
 var crypto = require('crypto');
 
@@ -15,12 +16,20 @@ exports.donate = function(req, res){
         date: req.body.date,
         amount: req.body.amount
     }).then(function(result){
-        res.json({
-            data: result.dataValues
+        new_id = crypto.randomBytes(20).toString('hex');
+        Comment.create({
+            comment_id: new_id,
+            user_id: req.body.user_id,
+            event_id: req.body.event_id,
+            content: req.body.comment
+        }).then(function(){
+            res.json({
+                data: result.dataValues
+            });
         });
     }).error(function(err){
         console.log(err);
-    })	
+    });
 }
 
 exports.login = function (req, res){

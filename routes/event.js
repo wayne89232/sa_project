@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var crypto = require('crypto');
 var Event = require('../models').Event;
+var Comment = require('../models').Comment;
 var User = require('../models').User;
 var Donation = require('../models').Donation;
 
@@ -50,6 +51,20 @@ exports.donation_list = function(req, res){
 			return result.dataValues;
 		});
 		res.json({ data: donation_list });
+	});
+}
+
+exports.comment_list = function(req, res){
+	Comment.findAll({
+		where:{ 
+			event_id: req.params.event_id
+		},
+		include: [User] 
+	}).then(function(result){
+		comment_list = _.map(result, function(result){
+			return result.dataValues;
+		});
+		res.json({ data: comment_list });
 	});
 }
 

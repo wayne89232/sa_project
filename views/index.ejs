@@ -58,6 +58,8 @@
                     <li><a href="/Event">Discover</a></li>
                     <li><a ng-show="admin_identify()" href="/Create_event">Hold an event</a></li>
                     <li>
+                    <li><a ng-show="is_login" href="" ng-bind="local_user"></a></li>
+                    <li>
                         <a href="#" class="ui minimal button" ng-hide="is_login">Sign In</a>
                     </li>
                     <li>

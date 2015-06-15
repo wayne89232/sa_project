@@ -82,8 +82,7 @@
 			<div class="row" ng-repeat="donate in donation_list">
 				<div>
 					<i class="usd icon"></i><span ng-bind="donate.amount"></span>
-				</div>	
-				<span>By <span ng-bind="donate.User.user_name"></span></span>
+				</div>
 				<span>At <span ng-bind="donate.date"></span></span>
 			</div>
 		</div>	
@@ -91,8 +90,11 @@
 			<div class="row">
 				<div class="6u 12u(mobilep)">
 					<h3>Comments</h3>
-
 				</div>
+			</div>
+			<div class="row" ng-repeat="comment in comments">
+				<span><span ng-bind="comment.User.user_name"></span>:</span>
+				<span ng-bind="comment.content"></span>
 			</div>
 		</div>	
 	</div>
