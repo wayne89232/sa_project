@@ -2,19 +2,18 @@
 
 			<!-- Banner -->
 				<section id="banner">
-					<h2></h2>
-					<p>Donate & Relation management</p>
+					<h2>Donate & Relation management</h2>
 					<ul class="actions">
 						<li><a href="/Signup" class="button special">Sign Up</a></li>
-						<li><a href="#" class="button">Donate</a></li>
+						<li><a href="/Event" class="button">Donate</a></li>
 					</ul>
 				</section>
 
 			<!-- Main -->
 				<section id="main" class="container">
-
+					<header><h3>Popular Events</h3></header>
 					<div class="ui cards">
-		  				<div class="card" ng-repeat="event in event_list">
+		  				<div class="card" ng-repeat="event in home_event_list">
 		    				<a class="image" ng-click="show_event(event.event_id)">
 		      					<img src="/images/J.JPG">
 		    				</a>

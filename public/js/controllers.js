@@ -16,6 +16,9 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
     		$scope.home_event_list = $scope.home_event_list.slice(0,3)
     	}
     });
+    $scope.show_event = function(id){
+    	$location.path('/event/'+id);
+    }	
 	$scope.login = function(){
 		if($scope.account != null && $scope.password != null){
 	            var data = {
