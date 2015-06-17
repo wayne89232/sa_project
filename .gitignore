@@ -1,5 +1,4 @@
 node_modules/*
-setting/db.js
 .DS_Store
 npm-debug.log
 DBSCHEMA.txt
