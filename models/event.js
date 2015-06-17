@@ -9,7 +9,7 @@ exports.Event = function(Sequelize, sequelize){
 		location: Sequelize.STRING,
 		goal: Sequelize.INTEGER,
 		bank_account: Sequelize.STRING,
-		description: Sequelize.STRING
+		description: Sequelize.TEXT
 	},{
 		tableName: 'event'
 	});

@@ -2,6 +2,7 @@ var _ = require('underscore');
 var crypto = require('crypto');
 var Event = require('../models').Event;
 var Donation = require('../models').Donation;
+var Follow = require('../models').Follow;
 var User = require('../models').User;
 
 exports.show_event = function(req, res){
@@ -18,6 +19,15 @@ exports.user_info = function(req, res){
 }
 exports.donation_list = function(req, res){
 	Donation.findAll({ 
+		where:{ user_id: req.params.user_id },
+		include: [Event] 
+	}).then(function(result){
+		res.json({ data: result });
+	});
+}
+
+exports.track_list = function(req, res){
+	Follow.findAll({ 
 		where:{ user_id: req.params.user_id },
 		include: [Event] 
 	}).then(function(result){

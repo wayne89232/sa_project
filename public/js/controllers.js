@@ -88,8 +88,17 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 	                url: '/api/register', 
 	                data: data
 	            }).then(function(result){
-	                $window.location.reload();
-	                $location.path('/');
+	            	if(result.data.success==false){
+	            		alert(result.data.msg);
+	            	}
+	            	else{
+						$window.localStorage.setItem("is_login", true);
+						$window.localStorage.setItem("account", result.data.user);
+						$window.localStorage.setItem("user_type", result.data.type);
+						$window.localStorage.setItem("user_id", result.data.user_id);
+						$window.location.reload();       		
+	                	$location.path('/');	            		
+	            	}
 	            });
         	}
         	else{
@@ -103,9 +112,11 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 }).controller('User', function ($scope, $http, $location, $window, $routeParams) {
 	$http({ method:"GET", url:'/user/user_info/' + $routeParams.id }).then(function(user_info){
         $http({ method:"GET", url:'/user/donation_list/' + $routeParams.id }).then(function(result){
-
-			$scope.user_info = user_info.data.data;
-			$scope.donation_list = result.data.data;
+        	$http({ method:"GET", url:'/user/track_list/' + $routeParams.id }).then(function(tracks){
+				$scope.event_list = tracks.data.data;
+				$scope.user_info = user_info.data.data;
+				$scope.donation_list = result.data.data;
+			});	
     	});
     });
     if($routeParams.id==$window.localStorage.getItem("user_id")){
@@ -123,6 +134,9 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 			$scope.current = num;
 		}
 	}
+    $scope.show_event = function(id){
+    	$location.path('/event/'+id);
+    }	
 }).controller('Donate', function ($scope, $http, $location, $window, $routeParams) {
     $scope.donate = function(){
     	var dateObj = new Date();

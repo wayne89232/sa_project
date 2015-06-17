@@ -16,7 +16,7 @@
 	  			<a ng-click="show_change(0)" class="active item">Info</a>
 	  			<a ng-click="show_change(1)" class="item">Donation</a>
 	  			<a ng-click="show_change(2)" class="item">Track List</a>
-	  			<a ng-click="show_change(3)" class="item">Community</a>
+	  			<!-- <a ng-click="show_change(3)" class="item">Community</a> -->
 			</div>
 			<div ng-hide="show[0]" class="ui form segment">
 				<legend>Personal Information</legend>
@@ -61,6 +61,7 @@
     					<th>Event</th>
     					<th>Donated Amount</th>
     					<th>Date</th>
+    					<th>Details</th>
     				</tr>
     			</thead>
     			<tbody>
@@ -68,22 +69,27 @@
 						<td ng-bind = "donation.Event.event_name"></td>
 						<td ng-bind = "donation.amount"></td>
 						<td ng-bind = "donation.date"></td>
+						<td><i ng-click="show_event(donation.Event.event_id)" class="browser icon"></i></td>
 					</tr>
 				</tbody>
    			</table>
 		</div>
 		<div ng-hide="show[2]">
-			<div ng-repeat="event in trackings | filter:search">
-				<a>
-					<div ng-bind = "event.photo_url"></div>
-					<h3 ng-bind = "event.event_name"></h3>
-					<p ng-bind = "event.event_date"></p>
-					<p ng-bind = "event.location"></p>
-					<p ng-bind = "event.expire_time"></p>
-					<div>
-						<!-- Progress Bar -->
-					</div>
-				</a>
+			<div class="ui cards">
+			  	<div class="card" ng-repeat="event in event_list">
+			    	<a class="image" ng-click="show_event(event.Event.event_id)">
+			      		<img src="/images/J.JPG">
+			    	</a>
+			   		<div class="content">
+			      			<p class="header" ng-bind="event.Event.event_name"></p>
+			      		<div class="meta">
+			        		<p ng-bind="event.Event.event_date"></p>
+			      		</div>
+			      		<div class="description">
+			      			<p ng-bind="event.Event.description"></p>
+			      		</div>
+			    	</div>
+			  	</div>
 			</div>
 		</div>
 			<div ng-hide="show[3]">

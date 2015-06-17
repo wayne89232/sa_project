@@ -35,3 +35,11 @@
 .ui.transparent.input.green.basic.button.login > .login_input{
   color: white;
 }
+
+p {
+  white-space: nowrap;
+  width: 100%;                   
+  overflow: hidden;              /* "overflow" value must be different from "visible" */ 
+
+  text-overflow:    ellipsis;
+}

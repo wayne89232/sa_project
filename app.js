@@ -94,7 +94,7 @@ app.get('/event/donation_list/:event_id', event.donation_list);
 app.get('/event/comment_list/:event_id', event.comment_list);
 app.get('/user/donation_list/:user_id', user.donation_list);
 app.get('/user/user_info/:user_id', user.user_info);
-
+app.get('/user/track_list/:user_id', user.track_list);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

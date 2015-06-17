@@ -5,6 +5,7 @@ var _ = require('underscore');
 var User = require('../models').User;
 var Comment = require('../models').Comment;
 var Donation = require('../models').Donation;
+var Follow = require('../models').Follow;
 var crypto = require('crypto');
 
 exports.donate = function(req, res){
@@ -23,8 +24,21 @@ exports.donate = function(req, res){
             event_id: req.body.event_id,
             content: req.body.comment
         }).then(function(){
-            res.json({
-                data: result.dataValues
+            new_id = crypto.randomBytes(20).toString('hex');
+            Follow.findOrCreate({
+                where: {
+                    user_id: req.body.user_id,
+                    event_id: req.body.event_id
+                },
+                defaults: {
+                    follow_id: new_id,
+                    user_id: req.body.user_id,
+                    event_id: req.body.event_id
+                }
+            }).then(function(){
+                res.json({
+                    data: result.dataValues
+                });
             });
         });
     }).error(function(err){
@@ -82,13 +96,21 @@ exports.register = function(req, res){
             	email: req.body.email,
             	user_type: "donor"
             }).then(function(user){
-                res.redirect('/');
+                res.json({
+                    success: true,
+                    user: user.dataValues.account,
+                    user_type: user.dataValues.type,
+                    user_id: user.dataValues.user_id
+                });
        		}).error(function(err){
             	console.log(err);
         	})
         }
         else{
-            res.redirect('/');
+            res.json({
+                success: false,
+                msg: "Account exists"
+            });
         }
     });    
 }
