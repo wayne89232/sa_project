@@ -34,10 +34,26 @@
 			</div>
 			<div class="row uniform 50%">
 				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Name</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="text" ng-model="user_name" placeholder="Your name here" />
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
+					<p>Birthdate</p>
+				</div>
+				<div class="8u 12u(mobilep)">
+					<input type="text" pick-a-date="date" pick-a-date-options="{ format: 'yyyy/mm/dd' }" ng-model="birthdate"/>
+				</div>
+			</div>
+			<div class="row uniform 50%">
+				<div class="4u 12u(mobilep)" style="padding-top:20px">
 					<p>Email Address</p>
 				</div>
 				<div class="8u 12u(mobilep)">
-					<input type="email" ng-model="email" placeholder="Email Address" />
+					<input type="text" ng-model="email" placeholder="Email Address" />
 				</div>
 			</div>
 			<div class="row uniform 50%">

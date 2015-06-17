@@ -78,8 +78,8 @@ angular.module('myApp.controllers', ['ngRoute','angular-datepicker']).controller
 	            var data = {
 	                account: $scope.account, 
 	                password: $scope.password,
-	                user_name: "",
-	                birthdate:"",
+	                user_name: $scope.user_name,
+	                birthdate: $scope.birthdate,
 	                email: $scope.email,
 	                type: "donor"
 	            };

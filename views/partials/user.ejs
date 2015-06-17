@@ -33,11 +33,11 @@
 				<div class="two required fields">
 					<div class="field">
 						<label>Name</label>
-						<input placeholder="Text Input" type="text" ng-model="user_info.user_name">
+						<input placeholder="Text Input" type="text" ng-model="user_info.user_name" readonly>
 					</div>
 					<div class="field">
 						<label>Email</label>
-						<input placeholder="Text Input" type="text" ng-model="user_info.email">
+						<input placeholder="Text Input" type="text" ng-model="user_info.email" readonly>
 					</div>
 				</div>
 				<div class="two required fields">
@@ -47,12 +47,12 @@
 					</div> -->
 					<div class="field">
 						<label>Birthdate</label>
-						<input type="text"  ng-model="user_info.birthdate"/>
+						<input type="text"  ng-model="user_info.birthdate" readonly/>
 					</div>
 				</div>
-				<div class="required fields">
+			<!-- 	<div class="required fields">
 					<div class="ui green submit button">Update Information</div>
-				</div>
+				</div> -->
 			</div>
 		<div ng-hide="show[1]">
 			<table class="ui celled table">
